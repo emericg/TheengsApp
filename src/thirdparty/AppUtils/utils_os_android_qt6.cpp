@@ -461,7 +461,7 @@ bool UtilsAndroid::gpsutils_isGpsEnabled()
     bool status = false;
 
     jboolean verified = QJniObject::callStaticMethod<jboolean>(
-        "io/emeric/utils/QGpsUtils",
+        "com/emeric/utils/QGpsUtils",
         "checkGpsEnabled",
         "(Landroid/content/Context;)Z",
         QNativeInterface::QAndroidApplication::context());
@@ -479,7 +479,7 @@ bool UtilsAndroid::gpsutils_forceGpsEnabled()
     bool status = false;
 
     jboolean verified = QJniObject::callStaticMethod<jboolean>(
-        "io/emeric/utils/QGpsUtils",
+        "com/emeric/utils/QGpsUtils",
         "forceGpsEnabled",
         "(Landroid/content/Context;)Z",
         QNativeInterface::QAndroidApplication::context());

@@ -1,6 +1,6 @@
 TARGET  = Theengs
 
-VERSION = 1.4.0
+VERSION = 1.4.1
 DEFINES+= APP_NAME=\\\"$$TARGET\\\"
 DEFINES+= APP_VERSION=\\\"$$VERSION\\\"
 
@@ -277,6 +277,7 @@ android {
     OTHER_FILES += $${PWD}/assets/android/src/com/theengs/app/TheengsBootServiceBroadcastReceiver.java \
                    $${PWD}/assets/android/src/com/theengs/app/TheengsAndroidService.java \
                    $${PWD}/assets/android/src/com/theengs/app/TheengsAndroidNotifier.java \
+                   $${PWD}/assets/android/src/com/theengs/utils/QGpsUtils.java \
                    $${PWD}/assets/android/src/com/theengs/utils/QShareUtils.java \
                    $${PWD}/assets/android/src/com/theengs/utils/QSharePathResolver.java
 
