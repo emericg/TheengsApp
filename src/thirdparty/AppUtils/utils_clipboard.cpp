@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2020 Emeric Grange
+ * Copyright (c) 2024 Emeric Grange
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,40 +20,43 @@
  * SOFTWARE.
  */
 
-#ifndef UTILS_OS_IOS_H
-#define UTILS_OS_IOS_H
+#include "utils_clipboard.h"
 
-#include <QtGlobal>
-#include <QString>
+#include <QGuiApplication>
+#include <QClipboard>
+#include <QMimeData>
 
-#if defined(Q_OS_IOS)
 /* ************************************************************************** */
 
-/*!
- * \brief iOS utils
- */
-class UtilsIOS
+void UtilsClipboard::clear()
 {
-public:
-    /*!
-     * \return True if notification permission has been previously obtained.
-     */
-    static bool checkPermission_notification();
+    //
+}
 
-    /*!
-     * \return True if notification permission has been explicitly obtained.
-     */
-    static bool getPermission_notification();
+void UtilsClipboard::setText(const QString &txt)
+{
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    QString originalText = clipboard->text();
 
-    static void screenKeepOn(bool on);
+    clipboard->setText(txt);
+}
 
-    static void screenLockOrientation(int orientation);
+QString UtilsClipboard::getText()
+{
+    const QClipboard *clipboard = QGuiApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
 
-    static void screenLockOrientation(int orientation, bool autoRotate);
+    if (mimeData->hasText())
+    {
+        return mimeData->text();
+        // Qt::PlainText;
+    }
+    else
+    {
+        // not handled
+    }
 
-    static void vibrate(int milliseconds);
-};
+    return QString();
+}
 
 /* ************************************************************************** */
-#endif // Q_OS_IOS
-#endif // UTILS_OS_IOS_H

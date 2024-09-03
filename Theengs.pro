@@ -31,6 +31,8 @@ include(src/thirdparty/SingleApplication/SingleApplication.pri)
 DEFINES += QAPPLICATION_CLASS=QApplication
 
 # Various utils
+CONFIG += UTILS_DOCK_ENABLED
+CONFIG += UTILS_NOTIFICATIONS_ENABLED
 include(src/thirdparty/AppUtils/AppUtils.pri)
 
 # Theengs submodule

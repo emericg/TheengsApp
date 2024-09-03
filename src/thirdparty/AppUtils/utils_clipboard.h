@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2020 Emeric Grange
+ * Copyright (c) 2024 Emeric Grange
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,40 +20,28 @@
  * SOFTWARE.
  */
 
-#ifndef UTILS_OS_IOS_H
-#define UTILS_OS_IOS_H
-
-#include <QtGlobal>
-#include <QString>
-
-#if defined(Q_OS_IOS)
+#ifndef UTILS_CLIPBOARD_H
+#define UTILS_CLIPBOARD_H
 /* ************************************************************************** */
 
+#include <QObject>
+#include <QString>
+
 /*!
- * \brief iOS utils
+ * \brief Clipboard wrapper for QML
+ *
+ * https://doc.qt.io/qt-6/qclipboard.html
  */
-class UtilsIOS
+class UtilsClipboard : public QObject
 {
+    Q_OBJECT
+
 public:
-    /*!
-     * \return True if notification permission has been previously obtained.
-     */
-    static bool checkPermission_notification();
+    Q_INVOKABLE static void clear();
 
-    /*!
-     * \return True if notification permission has been explicitly obtained.
-     */
-    static bool getPermission_notification();
-
-    static void screenKeepOn(bool on);
-
-    static void screenLockOrientation(int orientation);
-
-    static void screenLockOrientation(int orientation, bool autoRotate);
-
-    static void vibrate(int milliseconds);
+    Q_INVOKABLE static void setText(const QString &txt);
+    Q_INVOKABLE static  QString getText();
 };
 
 /* ************************************************************************** */
-#endif // Q_OS_IOS
-#endif // UTILS_OS_IOS_H
+#endif // UTILS_CLIPBOARD_H
