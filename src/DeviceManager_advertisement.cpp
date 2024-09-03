@@ -132,7 +132,7 @@ void DeviceManager::updateBleDevice(const QBluetoothDeviceInfo &info,
                 //         << "service data" << Qt::dec << info.serviceData(id).size() << Qt::hex
                 //         << "bytes:" << info.serviceData(id).toHex();
 
-                dd->parseAdvertisementData(DeviceUtils::BLE_ADV_MANUFACTURERDATA,
+                dd->parseAdvertisementData(DeviceUtils::BLE_ADV_SERVICEDATA,
                                            id.toUInt16(), info.serviceData(id));
 
                 ArduinoJson::DynamicJsonDocument doc(4096);

@@ -1261,7 +1261,11 @@ void Device::setRssi(const int rssi)
         m_rssi = rssi;
         Q_EMIT rssiUpdated();
     }
-    m_rssiTimer.start();
+
+    if (m_rssiTimeoutInterval > 0)
+    {
+        m_rssiTimer.start();
+    }
 }
 
 void Device::cleanRssi()

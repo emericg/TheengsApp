@@ -35,7 +35,7 @@ print("> Make sure you consult ./contribs_builder.py --help")
 print("")
 
 targets = ['linux', 'macos', 'macos_x86_64', 'macos_arm64', 'msvc2019', 'msvc2022',
-           'android_armv8', 'android_armv7', 'android_x86_64', 'android_x86'
+           'android_armv8', 'android_armv7', 'android_x86_64', 'android_x86',
            'ios', 'ios_simulator', 'ios_armv7', 'ios_armv8']
 
 softwares = ['qtmqtt', 'qtconnectivity']
