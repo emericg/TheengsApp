@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto"
-          package="com.theengs.app" android:versionName="1.4.0" android:versionCode="01040001">
+          package="com.theengs.app" android:versionName="1.4.0" android:versionCode="01040006">
 
-    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" />
 
     <!-- Request legacy Bluetooth permissions (up to Android 11 / SDK 30) -->
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
@@ -19,10 +19,12 @@
     <!-- Service -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
+    <!-- MQTT -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Others -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" android:minSdkVersion="33"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <!-- Hardware permissions -->
@@ -42,29 +44,29 @@
                   android:label="Theengs">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
-            <meta-data android:name="android.app.arguments" android:value="-- %%INSERT_APP_ARGUMENTS%% --"/>
-            <meta-data android:name="android.app.extract_android_style" android:value="none"/>
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --" />
+            <meta-data android:name="android.app.arguments" android:value="-- %%INSERT_APP_ARGUMENTS%% --" />
+            <meta-data android:name="android.app.extract_android_style" android:value="minimal" />
             <meta-data android:name="android.app.splash_screen_drawable" android:resource="@drawable/splash" />
-            <meta-data android:name="android.app.splash_screen_sticky" android:value="true"/>
-            <meta-data android:name="android.app.background_running" android:value="false"/>
+            <meta-data android:name="android.app.splash_screen_sticky" android:value="true" />
+            <meta-data android:name="android.app.background_running" android:value="false" />
         </activity>
 
         <!-- Android service(s) -->
         <receiver android:name=".TheengsBootServiceBroadcastReceiver" android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service android:name=".TheengsAndroidService" android:process=":qt_service">
-            <meta-data android:name="android.app.background_running" android:value="true"/>
-            <meta-data android:name="android.app.arguments" android:value="--service"/>
-            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
+            <meta-data android:name="android.app.background_running" android:value="true" />
+            <meta-data android:name="android.app.arguments" android:value="--service" />
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --" />
         </service>
 
     </application>
