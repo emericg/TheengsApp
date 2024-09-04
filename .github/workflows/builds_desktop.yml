@@ -14,8 +14,8 @@ on:
 
 env:
   APP_NAME: "Theengs"
-  APP_VERSION: "1.4"
-  QT_VERSION: "6.5.3"
+  APP_VERSION: "1.4.1"
+  QT_VERSION: "6.6.3"
 
 #-------------------------------------------------------------------------------
 # Workflow jobs
@@ -35,7 +35,7 @@ jobs:
 
       # Install Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtconnectivity qtwebsockets qtcharts qtshadertools qt5compat
@@ -71,7 +71,7 @@ jobs:
 
       # Upload AppImage
       - name: Upload AppImage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.APP_NAME}}-${{env.APP_VERSION}}-linux64.AppImage
           path: ${{env.APP_NAME}}-${{env.APP_VERSION}}-linux64.AppImage
@@ -95,7 +95,7 @@ jobs:
 
       # Install Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtconnectivity qtwebsockets qtcharts qtshadertools qt5compat
@@ -129,7 +129,7 @@ jobs:
 
       # Upload app ZIP
       - name: Upload app ZIP
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.APP_NAME}}-${{env.APP_VERSION}}-macOS.zip
           path: ${{env.APP_NAME}}-${{env.APP_VERSION}}-macOS.zip
@@ -155,7 +155,7 @@ jobs:
 
       # Install Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtconnectivity qtwebsockets qtcharts qtshadertools qt5compat
@@ -191,7 +191,7 @@ jobs:
 
       # Upload app ZIP
       - name: Upload app ZIP
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.APP_NAME}}-${{env.APP_VERSION}}-win64.zip
           path: ${{env.APP_NAME}}-${{env.APP_VERSION}}-win64.zip
@@ -199,7 +199,7 @@ jobs:
 
       # Upload NSIS installer
       - name: Upload NSIS installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.APP_NAME}}-${{env.APP_VERSION}}-win64.exe
           path: ${{env.APP_NAME}}-${{env.APP_VERSION}}-win64.exe

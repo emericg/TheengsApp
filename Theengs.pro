@@ -10,7 +10,7 @@ QT     += qml quick quickcontrols2 svg widgets charts
 QT     += mqtt
 
 # Validate Qt version
-!versionAtLeast(QT_VERSION, 6.4) : error("You need at least Qt version 6.4 for $${TARGET}")
+!versionAtLeast(QT_VERSION, 6.6) : error("You need at least Qt version 6.6 for $${TARGET}")
 
 # Project features #############################################################
 
