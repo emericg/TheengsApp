@@ -279,7 +279,7 @@ if "qtmqtt" in softwares_selected:
         print("> Downloading " + FILE_qtmqtt + "...")
         urllib.request.urlretrieve("https://github.com/qt/qtmqtt/archive/refs/tags/v" + QT_VERSION + ".zip", src_dir + FILE_qtmqtt)
 
-## Android QtConnectivity (version: QT_VERSION custom)
+## Android QtConnectivity (version: QT_VERSION+custom)
 for TARGET in TARGETS:
     if TARGET[0] == "android":
         FILE_qtconnectivity = "qtconnectivity-blescanfiltering_v1_" + QT_VERSION.replace('.', '') + ".zip"
