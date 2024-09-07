@@ -25,6 +25,7 @@
 #include <QCoreApplication>
 #elif defined(Q_OS_IOS)
 #include "utils_os_ios.h"
+#include "utils_os_ios_notif.h"
 #endif
 
 /* ************************************************************************** */
@@ -129,7 +130,7 @@ bool NotificationManager::checkNotificationPermissions()
 #if defined(Q_OS_ANDROID)
     m_permOS = UtilsAndroid::checkPermission_notification();
 #elif defined(Q_OS_IOS)
-    m_permOS = UtilsIOS::checkPermission_notification();
+    m_permOS = UtilsIOSNotifications::checkPermission_notification();
 #endif
 
     if (permOS_was != m_permOS)
@@ -148,7 +149,7 @@ bool NotificationManager::requestNotificationPermissions()
 #if defined(Q_OS_ANDROID)
     m_permOS = UtilsAndroid::getPermission_notification();
 #elif defined(Q_OS_IOS)
-    m_permOS = UtilsIOS::getPermission_notification();
+    m_permOS = UtilsIOSNotifications::getPermission_notification();
 #endif
 
     if (permOS_was != m_permOS)

@@ -394,7 +394,7 @@ bool UtilsApp::checkMobileBluetoothPermission()
 #if defined(Q_OS_ANDROID)
     return UtilsAndroid::checkPermission_bluetooth();
 #elif defined(Q_OS_IOS)
-    #warning("Please use Qt permission system directly on iOS")
+    qWarning() << "Please use Qt permission system directly on iOS";
     return false;
 #endif
 
@@ -406,7 +406,7 @@ bool UtilsApp::getMobileBluetoothPermission()
 #if defined(Q_OS_ANDROID)
     return UtilsAndroid::getPermission_bluetooth();
 #elif defined(Q_OS_IOS)
-    #warning("Please use Qt permission system directly on iOS")
+    qWarning() << "Please use Qt permission system directly on iOS";
     return false;
 #endif
 
@@ -610,7 +610,11 @@ bool UtilsApp::checkMobileNotificationPermission()
 #if defined(Q_OS_ANDROID)
     return UtilsAndroid::checkPermission_notification();
 #elif defined(Q_OS_IOS)
-    return UtilsIOS::checkPermission_notification();
+    #if defined(UTILS_NOTIFICATIONS_ENABLED)
+        return UtilsIOSNotifications::checkPermission_notification();
+    #else
+        qWarning() << "UTILS_NOTIFICATIONS_ENABLED is not enabled";
+    #endif
 #endif
 
     return true;
@@ -621,7 +625,11 @@ bool UtilsApp::getMobileNotificationPermission()
 #if defined(Q_OS_ANDROID)
     return UtilsAndroid::getPermission_notification();
 #elif defined(Q_OS_IOS)
-    return UtilsIOS::getPermission_notification();
+    #if defined(UTILS_NOTIFICATIONS_ENABLED)
+        return UtilsIOSNotifications::getPermission_notification();
+    #else
+        qWarning() << "UTILS_NOTIFICATIONS_ENABLED is not enabled";
+    #endif
 #endif
 
     return true;
