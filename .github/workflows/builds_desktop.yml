@@ -57,7 +57,7 @@ jobs:
       - name: Setup env
         run: |
              qmake --version
-             sudo rm ${{env.GITHUB_WORKSPACE}}/Qt/${{env.QT_VERSION}}/gcc_64/plugins/sqldrivers/libqsqlmimer.so
+             sudo rm ${{github.workspace}}/Qt/${{env.QT_VERSION}}/gcc_64/plugins/sqldrivers/libqsqlmimer.so
 
       # Build application
       - name: Build application
